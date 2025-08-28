@@ -1,0 +1,143 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.game-container {
+  background: rgba(0, 0, 0, 0.75);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  width: 95%;
+  max-width: 650px;
+  color: #fff;
+}
+
+.title {
+  font-size: clamp(1.5rem, 5vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #ffe082;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.reset-btn {
+  background: #ff4b5c;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.reset-btn:hover {
+  background: #e04352;
+  transform: scale(1.05);
+}
+
+.stats {
+  display: flex;
+  gap: 20px;
+  font-size: 1rem;
+}
+
+.stats span {
+  font-weight: bold;
+  color: #ffe082;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  justify-content: center;
+}
+
+@media (min-width: 992px) {
+  .game-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.card-tile {
+  aspect-ratio: 1 / 1;
+  perspective: 1000px;
+  position: relative;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.card-tile.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.card-front {
+  background: #1976d2; 
+  color: #fff;
+}
+
+.card-back {
+  background: #fff;
+  color: #333;
+  transform: rotateY(180deg);
+}
+
+.card-tile.matched .card-back {
+  background: #4caf50;
+  color: #fff;
+}
+
+.card-button {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.modal-content {
+  border-radius: 15px;
+  background: #fff;
+  color: #333;
+}
+
+.modal-header {
+  background: #667eea;
+  color: white;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
